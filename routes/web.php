@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
-})->name('home');
+})->name('home', [
+    "title" => "home"
+]);
 
 Route::get('/tentang', function () {
     return view('tentang');
@@ -19,5 +21,10 @@ Route::get('/kontak', function () {
 })->name('kontak');
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('profile', [
+        "nama" => "Muhammad Raihan Rafananda",
+        "nim" => "13242520056",
+        "prodi" => "Teknologi Informasi"
+    ]);
 })->name('profile');
+
