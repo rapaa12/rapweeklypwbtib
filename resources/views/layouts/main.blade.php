@@ -17,16 +17,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          <a class="nav-link {{ request()->is('home') ? 'active' : '' }}" href="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
+          <a class="nav-link {{ request()->is('profile') ? 'active' : '' }}" href="/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/layanan">Layanan</a>
+          <a class="nav-link {{ request()->is('berita') ? 'active' : '' }}" href="/berita">Berita</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/kontak">Contact</a>
+          <a class="nav-link {{ request()->is('kontak') ? 'active' : '' }}" href="/kontak">Contact</a>
         </li>
       </ul>
     </div>
