@@ -10,12 +10,16 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('beritas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('beritas', function (Blueprint $table) {
+    $table->id();
+    $table->string('judul');
+    $table->string('slug')->unique();
+    $table->string('penulis');
+    $table->longText('konten');
+    $table->timestamps();
+});
+}
 
     /**
      * Reverse the migrations.

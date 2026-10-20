@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BeritaController;
 use App\Models\Berita;
 
 Route::get('/', function () {
@@ -13,26 +14,14 @@ Route::get('/home', function () {
     "title" => "home"
 ])->name('home');
 
-Route::get('/berita', function () {
-    return view('berita', [
-        "title" => "berita",
-        "beritas" => Berita::ambilBerita(),
-    ]);
-})->name('berita');
+Route::get('/berita', [BeritaController::class, 'index'])
+    ->name('berita');
 
-Route::get('/berita/{slug}', function ($slug) {
-    $berita = Berita::getBerita($slug);
+Route::get('/berita/{slug}', [BeritaController::class, 'show'])
+    ->name('berita.detail');
 
-    if (!$berita) {
-        abort(404);
-    }
-
-    return view('beritatunggal', [
-        'title' => $berita['judul'],
-        'berita' => $berita,
-    ]);
-})->name('berita.detail');
-
+Route::get('/statistik-berita', [BeritaController::class, 'statistik'])
+    ->name('berita.statistik');
 
 Route::get('/kontak', function () {
     return view('kontak');

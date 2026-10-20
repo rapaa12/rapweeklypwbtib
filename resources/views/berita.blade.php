@@ -6,21 +6,25 @@
 
     <h1 class="mb-4">Daftar Berita</h1>
 
-    @foreach ($beritas as $berita)
+    @forelse ($beritas as $berita)
 
         <article class="mb-4">
 
             <h2>
-                <a href="{{ route('berita.detail', ['slug' => $berita['slug']]) }}">
-                    {{ $berita['judul'] }}
+                <a href="{{ route('berita.detail', ['slug' => $berita->slug]) }}">
+                    {{ $berita->judul }}
                 </a>
             </h2>
 
-            <h5>{{ $berita['penulis'] }}</h5>
+            <h5>
+                Penulis: {{ $berita->penulis }}
+            </h5>
 
-            <p>{{ $berita['konten'] }}</p>
+            <p>
+                {{ \Illuminate\Support\Str::limit($berita->konten, 150) }}
+            </p>
 
-            <a href="{{ route('berita.detail', ['slug' => $berita['slug']]) }}">
+            <a href="{{ route('berita.detail', ['slug' => $berita->slug]) }}">
                 Baca selengkapnya →
             </a>
 
@@ -28,7 +32,11 @@
 
         </article>
 
-    @endforeach
+    @empty
+
+        <p>Belum ada berita yang tersedia.</p>
+
+    @endforelse
 
 </div>
 

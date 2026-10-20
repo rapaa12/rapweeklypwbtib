@@ -7,22 +7,23 @@
     <article>
 
         <h1 class="text-center mb-3">
-            {{ $berita['judul'] }}
+            {{ $berita->judul }}
         </h1>
 
         <p class="text-center text-muted">
-            Ditulis oleh {{ $berita['penulis'] }}
+            Ditulis oleh {{ $berita->penulis }}
         </p>
 
         <hr>
 
         <div class="text-justify">
-            <p>{{ $berita['konten'] }}</p>
+            {!! nl2br(e($berita->konten)) !!}
         </div>
 
         <hr>
 
-        <a href="{{ route('berita') }}"> ← Kembali ke Daftar Berita
+        <a href="{{ route('berita') }}">
+            ← Kembali ke Daftar Berita
         </a>
 
     </article>
